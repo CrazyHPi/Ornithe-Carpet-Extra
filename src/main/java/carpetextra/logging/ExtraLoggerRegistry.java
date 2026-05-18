@@ -1,8 +1,8 @@
 package carpetextra.logging;
 
-import carpet.logging.HUDLogger;
-import carpet.logging.Logger;
-import carpet.logging.LoggerRegistry;
+import carpet.api.log.HudLogger;
+import carpet.api.log.Logger;
+import carpet.log.framework.LoggerRegistry;
 import carpetextra.logging.logHelpers.XpCounter;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.text.Text;
@@ -28,9 +28,9 @@ public class ExtraLoggerRegistry {
         return null;
     }
 
-    public static HUDLogger getHudLogger(String name, String defaultOption, String[] options) {
+    public static HudLogger getHudLogger(String name, String defaultOption, String[] options) {
         try {
-            return new HUDLogger(ExtraLoggerRegistry.class.getField("__" + name), name, defaultOption, options, false);
+            return new HudLogger(ExtraLoggerRegistry.class.getField("__" + name), name, defaultOption, options, false);
         } catch (NoSuchFieldException e) {
             throw new RuntimeException("Failed to create logger " + name);
         }

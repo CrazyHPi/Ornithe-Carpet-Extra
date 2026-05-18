@@ -2,7 +2,7 @@ package carpetextra;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-import carpet.logging.HUDController;
+import carpet.log.framework.HudController;
 import carpetextra.command.XpCounterCommand;
 import carpetextra.logging.ExtraLoggerRegistry;
 import carpetextra.utils.CarpetExtensionTranslations;
@@ -57,6 +57,6 @@ public class CarpetExtraServer implements CarpetExtension {
     @Override
     public void registerLoggers() {
         ExtraLoggerRegistry.initLoggers();
-        HUDController.register(ExtraLoggerRegistry::updateExtraHud);
+        HudController.register(ExtraLoggerRegistry::updateExtraHud);
     }
 }

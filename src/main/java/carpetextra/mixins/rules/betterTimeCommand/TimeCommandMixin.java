@@ -1,6 +1,8 @@
 package carpetextra.mixins.rules.betterTimeCommand;
 
 import carpetextra.CarpetExtraSettings;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.AbstractCommand;
 import net.minecraft.server.command.TimeCommand;
@@ -9,7 +11,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.List;
@@ -41,7 +42,7 @@ public abstract class TimeCommandMixin {
         }
     }
 
-    @Redirect(
+    @WrapOperation(
             method = "getSuggestions",
             at = @At(
                     value = "INVOKE",
@@ -49,10 +50,10 @@ public abstract class TimeCommandMixin {
                     ordinal = 1
             )
     )
-    private List<String> test1(String[] args, String[] strings) {
-        if (!CarpetExtraSettings.betterTimeCommand) {
-            AbstractCommand.suggestMatching(args, strings);
+    private List<String> addCommandSuggestion(String[] args, String[] suggestions, Operation<List<String>> original) {
+        if (CarpetExtraSettings.betterTimeCommand) {
+            return original.call(args, new String[]{"day", "noon", "night", "midnight"});
         }
-        return AbstractCommand.suggestMatching(args, "day", "noon", "night", "midnight");
+        return original.call(args, suggestions);
     }
 }

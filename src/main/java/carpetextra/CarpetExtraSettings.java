@@ -58,6 +58,14 @@ public class CarpetExtraSettings {
 
     // ==== COMMANDS ==== //
 
-    @Rule(desc = "better /time command", categories = {COMMAND})
+    @Rule(
+            desc = "better /time command",
+            extra = {
+                    "Add /time set noon and /time set midnight",
+                    "to set time to 6000 and 18000",
+                    "Also add tab suggestion"
+            },
+            categories = {COMMAND, CREATIVE}
+    )
     public static boolean betterTimeCommand = true;
 }
