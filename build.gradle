@@ -1,8 +1,8 @@
 plugins {
-	id 'maven-publish'
-	id 'fabric-loom' version '1.6-SNAPSHOT'
-	id 'ploceus' version '1.6-SNAPSHOT'
-	id "com.github.johnrengelman.shadow" version "8.1.0" // for mixin extra shadowJar
+//	id 'maven-publish'
+    id 'fabric-loom' version '1.14-SNAPSHOT'
+    id 'ploceus' version '1.14-SNAPSHOT'
+    id "com.gradleup.shadow" version "9.3.1" // for mixin extra shadowJar
 }
 
 base {
@@ -18,6 +18,7 @@ repositories {
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
 	maven { url 'https://jitpack.io' }
+    maven { url 'https://fastdl.crazyh.fun/maven/' }
 }
 
 configurations {
@@ -27,14 +28,18 @@ configurations {
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings ploceus.featherMappings(project.feather_build)
+    exceptions ploceus.raven(project.raven_build) // remove this line if not using exceptions patches
+    signatures ploceus.sparrow(project.sparrow_build) // remove this line if not using generics patches
 
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-//	include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:${project.mixin_extra_version}")))
+
 	// shadow jar to include mixin extra for older fabric loader version
 	include(shadow(annotationProcessor("io.github.llamalad7:mixinextras-common:${project.mixin_extra_version}")))
 
 	// carpet core
-	modImplementation "com.github.CrazyHPi:ornithe-carpet:${carpet_core_version}"
+//	modImplementation "com.github.CrazyHPi:ornithe-carpet:${carpet_core_version}"
+    // from self-hosted maven
+    modImplementation "carpet:ornithe-carpet:${carpet_core_version}"
 
 	// osl if you want
 	// ploceus.addCommonLibraries()
@@ -82,18 +87,18 @@ jar {
 }
 
 // Configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
-
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
-	}
-}
+//publishing {
+//	publications {
+//		mavenJava(MavenPublication) {
+//			from components.java
+//		}
+//	}
+//
+//	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
+//	repositories {
+//		// Add repositories to publish to here.
+//		// Notice: This block does NOT have the same function as the block in the top level.
+//		// The repositories here will be used for publishing your artifact, not for
+//		// retrieving dependencies.
+//	}
+//}

@@ -13,22 +13,22 @@ public class CarpetExtraSettings {
     public static final String EXTRA = "extra";
 
     // ==== RULES ==== //
-    @Rule(desc = "allow water to be placed in nether", category = {CREATIVE, EXTRA})
+    @Rule(desc = "allow water to be placed in nether", categories = {CREATIVE, EXTRA})
     public static boolean allowNetherWater = false;
 
-    @Rule(desc = "Disable creative mode item drop cooldown", category = {CREATIVE, EXTRA})
+    @Rule(desc = "Disable creative mode item drop cooldown", categories = {CREATIVE, EXTRA})
     public static boolean antiSpamDisabled = false;
 
-    @Rule(desc = "Creative player can open chest and shulker box when they are blocked", category = EXTRA)
+    @Rule(desc = "Creative player can open chest and shulker box when they are blocked", categories = EXTRA)
     public static boolean creativeOpenContainerNoCheck = false;
 
-    @Rule(desc = "No more bat spawning", category = {CREATIVE, EXTRA})
+    @Rule(desc = "No more bat spawning", categories = {CREATIVE, EXTRA})
     public static boolean disableBatSpawning = false;
 
-    @Rule(desc = "Hopper counter's hopper has no cooldown", category = {CREATIVE, EXTRA})
+    @Rule(desc = "Hopper counter's hopper has no cooldown", categories = {CREATIVE, EXTRA})
     public static boolean hopperCountersUnlimitedSpeed = false;
 
-    @Rule(desc = "Hopper with wool block on top outputs item infinitely without having its item decreased", category = {CREATIVE, EXTRA})
+    @Rule(desc = "Hopper with wool block on top outputs item infinitely without having its item decreased", categories = {CREATIVE, EXTRA})
     public static boolean hopperNoItemCost = false;
 
     @Rule(
@@ -37,7 +37,7 @@ public class CarpetExtraSettings {
                     "liquid might weird when it hits block that should be destroyed",
                     "it will just stop there with no more flow action"
             },
-            category = {CREATIVE, EXTRA}
+            categories = {CREATIVE, EXTRA}
     )
     public static boolean liquidNoBlockBreaking = false;
 
@@ -50,7 +50,7 @@ public class CarpetExtraSettings {
                     "Use /xpcounter <player name|armorstand> to query counter",
                     "Use /xpcounter <player|armorstand> reset to reset counter"
             },
-            category = {CREATIVE, EXTRA},
+            categories = {CREATIVE, EXTRA},
             options = {"off", "armorstand", "player"},
             validators = Validators.StrictValidator.class
     )
@@ -58,6 +58,6 @@ public class CarpetExtraSettings {
 
     // ==== COMMANDS ==== //
 
-    @Rule(desc = "better /time command", category = {COMMAND})
+    @Rule(desc = "better /time command", categories = {COMMAND})
     public static boolean betterTimeCommand = true;
 }
