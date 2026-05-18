@@ -12,7 +12,6 @@
     "rules.creativeOpenContainerNoCheck.ShulkerBoxBlockMixin",
     "rules.disableBatSpawning.BatEntityMixin",
     "rules.hopperCountersUnlimitedSpeed.HopperBlockEntityMixin",
-    "rules.hopperNoItemCost.HopperBlockEntityMixin",
     "rules.liquidNoBlockBreaking.FlowingLiquidBlockMixin",
     "rules.xpCounter.ArmorStandEntityMixin",
     "rules.xpCounter.XpOrbEntityMixin"

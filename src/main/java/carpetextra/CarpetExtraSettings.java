@@ -28,9 +28,6 @@ public class CarpetExtraSettings {
     @Rule(desc = "Hopper counter's hopper has no cooldown", categories = {CREATIVE, EXTRA})
     public static boolean hopperCountersUnlimitedSpeed = false;
 
-    @Rule(desc = "Hopper with wool block on top outputs item infinitely without having its item decreased", categories = {CREATIVE, EXTRA})
-    public static boolean hopperNoItemCost = false;
-
     @Rule(
             desc = "liquid no longer destory blocks, e.g redstone",
             extra = {
