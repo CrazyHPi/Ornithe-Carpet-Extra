@@ -11,6 +11,7 @@ import net.minecraft.item.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -21,7 +22,7 @@ public abstract class HopperBlockEntityMixin extends LootInventoryBlockEntity {
     public abstract boolean isEmpty();
 
     @Shadow
-    protected abstract boolean pushItems();
+    protected abstract boolean pushItem();
 
     @Shadow
     protected abstract boolean isFull();
@@ -38,6 +39,7 @@ public abstract class HopperBlockEntityMixin extends LootInventoryBlockEntity {
     @Shadow
     public abstract double getZ();
 
+    @Unique
     private static final int OPERATION_LIMIT = Short.MAX_VALUE;
 
     @Inject(
@@ -60,11 +62,11 @@ public abstract class HopperBlockEntityMixin extends LootInventoryBlockEntity {
                 boolean flag1 = false;
 
                 if (!this.isEmpty()) {
-                    flag1 = this.pushItems();
+                    flag1 = this.pushItem();
                 }
 
                 if (!this.isFull()) {
-                    flag1 = HopperBlockEntity.pullItems((HopperBlockEntity) (Object) this) || flag1;
+                    flag1 = HopperBlockEntity.pullItem((HopperBlockEntity) (Object) this) || flag1;
                 }
 
                 if (!flag1) {

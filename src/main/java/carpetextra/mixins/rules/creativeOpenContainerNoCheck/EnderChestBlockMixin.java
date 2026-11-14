@@ -34,7 +34,7 @@ public abstract class EnderChestBlockMixin {
             cir.setReturnValue(true);
         } else {
             enderChestInventory.setCurrentBlockEntity((EnderChestBlockEntity)blockEntity);
-            player.openInventoryMenu(enderChestInventory);
+            player.openChestMenu(enderChestInventory);
             player.incrementStat(Stats.ENDER_CHESTS_OPENED);
             cir.setReturnValue(true);
         }

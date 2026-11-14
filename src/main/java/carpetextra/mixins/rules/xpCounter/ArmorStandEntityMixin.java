@@ -3,7 +3,7 @@ package carpetextra.mixins.rules.xpCounter;
 import carpetextra.CarpetExtraSettings;
 import carpetextra.logging.logHelpers.XpCounter;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.XpOrbEntity;
+import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.living.ArmorStandEntity;
 import net.minecraft.entity.living.LivingEntity;
 import net.minecraft.util.math.Box;
@@ -26,18 +26,18 @@ public abstract class ArmorStandEntityMixin extends LivingEntity {
 
     @Inject(method = "pushAway", at = @At("HEAD"))
     private void countXp(Entity entity, CallbackInfo ci) {
-        if (entity instanceof XpOrbEntity) {
-            XpCounter.armorStandCounter.add(getServer(), ((XpOrbEntity) entity).getXp());
+        if (entity instanceof ExperienceOrbEntity) {
+            XpCounter.armorStandCounter.add(getServer(), ((ExperienceOrbEntity) entity).getXp());
             entity.remove();
         }
     }
 
     @Override
-    public void tickAi() {
-        super.tickAi();
+    public void mobTick() {
+        super.mobTick();
 
         if (CarpetExtraSettings.xpCounter.equals("armorstand")) {
-            Box box = this.getShape().expand(1.0D, 0.5D, 1.0D);
+            Box box = this.getShape().grown(1.0D, 0.5D, 1.0D);
             List<Entity> list = this.world.getEntities(this, box);
             for (Entity entity : list) {
                 if (!entity.removed) {

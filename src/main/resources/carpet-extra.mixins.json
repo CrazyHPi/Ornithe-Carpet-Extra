@@ -14,7 +14,7 @@
     "rules.hopperCountersUnlimitedSpeed.HopperBlockEntityMixin",
     "rules.liquidNoBlockBreaking.FlowingLiquidBlockMixin",
     "rules.xpCounter.ArmorStandEntityMixin",
-    "rules.xpCounter.XpOrbEntityMixin"
+    "rules.xpCounter.ExperienceOrbEntityMixin"
   ],
   "client": [
   ],

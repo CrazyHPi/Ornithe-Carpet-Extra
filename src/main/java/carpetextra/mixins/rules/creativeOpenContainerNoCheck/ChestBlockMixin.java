@@ -41,7 +41,7 @@ public abstract class ChestBlockMixin {
         if (CarpetExtraSettings.creativeOpenContainerNoCheck && player.isCreative()) {
             LockableMenuProvider lockableMenuProvider = forceGetCombinedMenuProvider(world, pos);
             if (lockableMenuProvider != null) {
-                player.openInventoryMenu(lockableMenuProvider);
+                player.openChestMenu(lockableMenuProvider);
                 if (this.type == ChestBlock.Type.BASIC) {
                     player.incrementStat(Stats.CHESTS_OPENED);
                 } else if (this.type == ChestBlock.Type.TRAP) {
