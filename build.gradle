@@ -1,7 +1,7 @@
 plugins {
 //	id 'maven-publish'
-    id 'fabric-loom' version '1.14-SNAPSHOT'
-    id 'ploceus' version '1.14-SNAPSHOT'
+    id 'fabric-loom' version '1.19-SNAPSHOT'
+    id 'ploceus' version '1.19-SNAPSHOT'
     id "com.gradleup.shadow" version "9.3.1" // for mixin extra shadowJar
 }
 
@@ -25,6 +25,10 @@ configurations {
 	implementation.extendsFrom shadow
 }
 
+ploceus {
+	setIntermediaryGeneration(2)
+}
+
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings ploceus.featherMappings(project.feather_build)
@@ -39,7 +43,9 @@ dependencies {
 	// carpet core
 //	modImplementation "com.github.CrazyHPi:ornithe-carpet:${carpet_core_version}"
     // from self-hosted maven
-    modImplementation "carpet:ornithe-carpet:${carpet_core_version}"
+//    modImplementation "carpet:ornithe-carpet:${carpet_core_version}"
+	// jitpack
+    modImplementation "com.github.CrazyHPi:ornithe-carpet:${carpet_core_jitpack}"
 
 	// osl if you want
 	// ploceus.addCommonLibraries()
